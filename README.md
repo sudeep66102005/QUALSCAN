@@ -1,53 +1,42 @@
-# Qualscan — Teleradiology & Diagnostic Reporting Website
+# QUALSCAN — Teleradiology Services
 
-A fast, mobile-first, single-page marketing site for **Qualscan**, a teleradiology and
-medical diagnostic services group (founded 1999) that provides remote radiology reporting
-to hospitals and diagnostic centers across the US, India, Africa and the Middle East.
+> "Every Interaction Counts"
 
-The site has one job: convince a hospital / diagnostic-center decision-maker that Qualscan
-is **fast, accurate and credible** enough to trust with their radiology reporting — and get
-them to **call or email**.
+Premium multi-page website for **Qualscan**, a leading medical diagnostic and teleradiology services group providing high-quality radiology reporting solutions for hospitals and diagnostic centers worldwide.
 
-## Stack
+## Pages
 
-No build step, no dependencies. Pure static site:
+| Page | File | Description |
+|------|------|-------------|
+| Home | `index.html` | Hero, statistics, global presence, CTA |
+| About | `about.html` | Vision, expertise, timeline (1999-2025), mission |
+| Services | `services.html` | Emergency nighthawk & elective services |
+| Specialties | `specialties.html` | 7 radiology subspecialties |
+| Why Qualscan | `why-qualscan.html` | 6 key advantages with stats |
+| Our Process | `process.html` | 5-step reporting workflow |
+| Values | `values.html` | Core company values |
+| Contact | `contact.html` | Contact form & information |
 
-- `index.html` — markup for all sections
-- `styles.css` — design system (deep-navy "reading room" + chrome/silver + a single luminous scan-line accent)
-- `script.js` — vanilla JS: scroll-reveal, animated counters, timeline progress, sticky header, mobile menu
-- `assets/logo-mark.svg` — the MRI scanner emblem, recreated as a scalable SVG
+## Design
 
-Fonts (Space Grotesk + Inter) load from Google Fonts via CDN with system-font fallbacks.
+- Dark navy blue + white + cyan accent color scheme
+- Premium glassmorphism cards with hover effects
+- Fully responsive (mobile, tablet, desktop)
+- Sticky navigation with mobile hamburger menu
+- Scroll-reveal animations
+- SVG icons throughout
+- Fast loading — zero dependencies, no build step required
 
-## Sections
+## Deployment
 
-1. **Hero** — sub-60-minute turnaround claim + global reach, with call/email CTAs
-2. **Trust bar** — founded year, 50+ years combined experience, 4 regions, 7 specialties
-3. **Why Qualscan** — the four pillars (Vision, Expertise, Process, People)
-4. **Specialties** — 7-modality grid
-5. **Services** — the two-track split (time-sensitive Nighthawk vs volume-sensitive electives)
-6. **How it works** — 5-step numbered flow
-7. **Experience** — 1999 → 2025 timeline with scroll progress
-8. **Values** — 4 values in priority order
-9. **Contact / footer** — phone numbers, email, final CTA
+This is a static site that deploys directly to **GitHub Pages** with no build step needed. Simply push to the `main` branch and enable GitHub Pages.
 
-## Run locally
+## Contact
 
-It's a static site, so just open `index.html`, or serve the folder:
+- **US:** +1 (239) 691-9529
+- **India:** +91 9902944847
+- **Email:** qualscan@gmail.com
 
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+---
 
-## Deploy
-
-Works as-is on GitHub Pages (a `.nojekyll` file is included), Netlify, Vercel, or any static host —
-just publish the repository root.
-
-## Notes for the client
-
-- **Email address:** the site currently uses `qualscan@gmail.com`. A branded domain email
-  (e.g. `contact@qualscan.com`) reads as more credible for a diagnostic services company —
-  confirm the final address and we'll swap it in `index.html`.
-- All turnaround numbers and milestones come from the supplied content brief.
+&copy; 2025 Qualscan. All rights reserved.
