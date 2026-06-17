@@ -20,18 +20,29 @@
       <stop offset="1" stop-color="#0a1828"/>
     </radialGradient>
   </defs>
+
+  <!-- base / foot -->
   <path d="M34 150 L150 150 Q172 150 178 168 L74 168 Q44 168 34 150 Z" fill="url(#chromeEdge)" opacity="0.9"/>
   <rect x="40" y="158" width="120" height="6" rx="3" fill="#8298b0" opacity="0.5"/>
+
+  <!-- outer gantry ring -->
   <circle cx="88" cy="86" r="68" fill="url(#chrome)"/>
   <circle cx="88" cy="86" r="68" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+  <!-- grooves -->
   <circle cx="88" cy="86" r="58" fill="none" stroke="#7c92a9" stroke-width="3" opacity="0.7"/>
   <circle cx="88" cy="86" r="50" fill="none" stroke="#e7eef6" stroke-width="3" opacity="0.8"/>
+  <!-- bore opening -->
   <circle cx="88" cy="86" r="42" fill="url(#bore)"/>
   <circle cx="88" cy="86" r="42" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- sensor dots -->
   <circle cx="60" cy="64" r="4.5" fill="#1a3a5c"/>
   <circle cx="72" cy="60" r="4.5" fill="#1a3a5c"/>
+
+  <!-- patient table sliding through bore -->
   <path d="M82 92 L186 120 L186 132 L96 112 Z" fill="url(#tableGrad)"/>
   <path d="M88 104 L184 126" stroke="#7890a8" stroke-width="2" opacity="0.6"/>
+  <!-- rails -->
   <path d="M96 118 L188 138" stroke="#aebfd0" stroke-width="4" stroke-linecap="round"/>
   <path d="M96 128 L188 148" stroke="#8aa0b6" stroke-width="4" stroke-linecap="round"/>
   <path d="M100 138 L150 149" stroke="#aebfd0" stroke-width="3" stroke-linecap="round" opacity="0.8"/>

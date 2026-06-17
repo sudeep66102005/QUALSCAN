@@ -1,92 +1,35 @@
-# QUALSCAN - Teleradiology Services Website
+# QUALSCAN — Teleradiology Services
 
 > "Every Interaction Counts"
 
-A premium multi-page website for **Qualscan**, a leading medical diagnostic and teleradiology services group providing high-quality radiology reporting solutions for hospitals and diagnostic centers worldwide.
-
-## Tech Stack
-
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Deployment:** Static export (compatible with GitHub Pages, Vercel, Netlify)
-
-## Features
-
-- Multi-page architecture with SEO optimization
-- Dark navy blue & white professional healthcare design
-- Fully responsive (mobile, tablet, desktop)
-- Sticky navigation with mobile hamburger menu
-- Premium glassmorphism cards and modern UI
-- Fast-loading with static export
-- Reusable React components
-- Contact form with validation
+Premium multi-page website for **Qualscan**, a leading medical diagnostic and teleradiology services group providing high-quality radiology reporting solutions for hospitals and diagnostic centers worldwide.
 
 ## Pages
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Hero, statistics, global presence |
-| About | `/about` | Vision, expertise, timeline |
-| Services | `/services` | Emergency & elective services |
-| Specialties | `/specialties` | Radiology subspecialties |
-| Why Qualscan | `/why-qualscan` | Key advantages |
-| Our Process | `/process` | 5-step workflow |
-| Values | `/values` | Core company values |
-| Contact | `/contact` | Contact form & info |
+| Page | File | Description |
+|------|------|-------------|
+| Home | `index.html` | Hero, statistics, global presence, CTA |
+| About | `about.html` | Vision, expertise, timeline (1999-2025), mission |
+| Services | `services.html` | Emergency nighthawk & elective services |
+| Specialties | `specialties.html` | 7 radiology subspecialties |
+| Why Qualscan | `why-qualscan.html` | 6 key advantages with stats |
+| Our Process | `process.html` | 5-step reporting workflow |
+| Values | `values.html` | Core company values |
+| Contact | `contact.html` | Contact form & information |
 
-## Getting Started
+## Design
 
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── about/page.tsx
-│   ├── contact/page.tsx
-│   ├── process/page.tsx
-│   ├── services/page.tsx
-│   ├── specialties/page.tsx
-│   ├── values/page.tsx
-│   ├── why-qualscan/page.tsx
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.tsx
-│   │   └── Footer.tsx
-│   └── ui/
-│       ├── FeatureCard.tsx
-│       ├── SectionHeader.tsx
-│       └── StatCard.tsx
-└── public/
-    └── logo-mark.svg
-```
+- Dark navy blue + white + cyan accent color scheme
+- Premium glassmorphism cards with hover effects
+- Fully responsive (mobile, tablet, desktop)
+- Sticky navigation with mobile hamburger menu
+- Scroll-reveal animations
+- SVG icons throughout
+- Fast loading — zero dependencies, no build step required
 
 ## Deployment
 
-This project is configured for static export (`output: "export"` in `next.config.js`), making it deployable to:
-
-- GitHub Pages
-- Vercel
-- Netlify
-- AWS S3/CloudFront
-- Any static hosting provider
+This is a static site that deploys directly to **GitHub Pages** with no build step needed. Simply push to the `main` branch and enable GitHub Pages.
 
 ## Contact
 
