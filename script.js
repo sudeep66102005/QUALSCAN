@@ -98,23 +98,38 @@
   // Observe counters
   const counters = document.querySelectorAll('[data-counter]');
   if (counters.length > 0) {
-    const counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          if (el.getAttribute('data-counter') === 'multi') {
-            animateMultiCounter(el);
-          } else {
-            animateSingleCounter(el);
-          }
-          counterObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
+    function runCounter(el) {
+      if (el.dataset.done === '1') return;
+      el.dataset.done = '1';
+      if (el.getAttribute('data-counter') === 'multi') {
+        animateMultiCounter(el);
+      } else {
+        animateSingleCounter(el);
+      }
+    }
 
-    counters.forEach(function (el) {
-      counterObserver.observe(el);
-    });
+    if ('IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      counters.forEach(function (el) { counterObserver.observe(el); });
+    }
+
+    // Fallback: trigger on scroll/load if observer didn't fire
+    function counterFallback() {
+      counters.forEach(function (el) {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight * 0.9) runCounter(el);
+      });
+    }
+    window.addEventListener('scroll', counterFallback);
+    window.addEventListener('load', counterFallback);
+    counterFallback();
   }
 
   // === Contact Form Handler ===
