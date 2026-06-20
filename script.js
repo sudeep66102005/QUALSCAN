@@ -16,7 +16,6 @@
       navToggle.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close mobile menu when a link is clicked
     mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         mobileMenu.classList.remove('open');
@@ -40,7 +39,6 @@
     });
   }
 
-
   // === Scroll Reveal Animation ===
   const revealElements = document.querySelectorAll('.reveal');
 
@@ -56,8 +54,52 @@
 
   window.addEventListener('scroll', checkReveal);
   window.addEventListener('load', checkReveal);
-  // Initial check
   checkReveal();
+
+  // === Counter Animation (0 → number) ===
+  function animateCounter(el) {
+    const target = el.getAttribute('data-count');
+    if (!target) return;
+
+    const num = parseInt(target, 10);
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(num * ease);
+
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = prefix + current + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // Observe stats for counter animation
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length > 0) {
+    const counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function (el) {
+      counterObserver.observe(el);
+    });
+  }
 
   // === Contact Form Handler ===
   const contactForm = document.getElementById('contactForm');
@@ -67,12 +109,6 @@
       alert('Thank you for your message! We will get back to you shortly.');
       contactForm.reset();
     });
-  }
-
-  // === Footer Year ===
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
   }
 
 })();
