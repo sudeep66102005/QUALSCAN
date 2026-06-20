@@ -57,41 +57,57 @@
   checkReveal();
 
   // === Counter Animation (0 → number) ===
-  function animateCounter(el) {
-    const target = el.getAttribute('data-count');
-    if (!target) return;
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
 
-    const num = parseInt(target, 10);
+  function animateSingleCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
     const duration = 2000;
     const start = performance.now();
 
     function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(num * ease);
-
-      const prefix = el.getAttribute('data-prefix') || '';
-      const suffix = el.getAttribute('data-suffix') || '';
+      const progress = Math.min((now - start) / duration, 1);
+      const current = Math.round(target * easeOutCubic(progress));
       el.textContent = prefix + current + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
+      if (progress < 1) requestAnimationFrame(update);
     }
-
     requestAnimationFrame(update);
   }
 
-  // Observe stats for counter animation
-  const counters = document.querySelectorAll('[data-count]');
+  function animateMultiCounter(el) {
+    const parts = el.getAttribute('data-parts').split(',').map(Number);
+    const sep = el.getAttribute('data-sep') || '/';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = easeOutCubic(progress);
+      const values = parts.map(function (target) {
+        return Math.max(1, Math.round(target * ease));
+      });
+      el.textContent = values.join(sep);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  // Observe counters
+  const counters = document.querySelectorAll('[data-counter]');
   if (counters.length > 0) {
     const counterObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
+          var el = entry.target;
+          if (el.getAttribute('data-counter') === 'multi') {
+            animateMultiCounter(el);
+          } else {
+            animateSingleCounter(el);
+          }
+          counterObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
