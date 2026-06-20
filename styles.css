@@ -148,7 +148,61 @@ input, textarea, select { font-family: inherit; }
 }
 
 
-/* === HERO === */
+/* === HERO VIDEO === */
+.hero-video-section {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+.hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.hero-video-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(10,25,41,0.7) 0%, rgba(10,25,41,0.5) 50%, rgba(10,25,41,0.8) 100%);
+}
+.hero-video-content {
+  position: relative; z-index: 2; text-align: center;
+  padding: 120px 24px 80px; max-width: 900px; margin: 0 auto;
+}
+.hero-animated-title {
+  font-size: clamp(2.2rem, 5.5vw, 4.2rem); font-weight: 800; line-height: 1.15;
+  color: var(--white); margin-bottom: 16px;
+}
+.hero-animated-sub {
+  font-size: clamp(1.4rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2;
+  color: var(--accent); margin-bottom: 40px;
+}
+.hero-animated-title .word,
+.hero-animated-sub .word {
+  display: inline-block; opacity: 0; transform: translateY(30px);
+  animation: wordReveal 0.6s ease forwards;
+}
+.hero-cta-animated {
+  opacity: 0; animation: fadeUp 0.8s ease 2.2s forwards;
+}
+
+/* Staggered word animation delays */
+.hero-animated-title .word:nth-child(1) { animation-delay: 0.3s; }
+.hero-animated-title .word:nth-child(2) { animation-delay: 0.5s; }
+.hero-animated-title .word:nth-child(3) { animation-delay: 0.7s; }
+.hero-animated-title .word:nth-child(4) { animation-delay: 0.9s; }
+.hero-animated-title .word:nth-child(5) { animation-delay: 1.1s; }
+.hero-animated-title .word:nth-child(6) { animation-delay: 1.3s; }
+.hero-animated-title .word:nth-child(7) { animation-delay: 1.5s; }
+.hero-animated-sub .word:nth-child(1) { animation-delay: 1.7s; }
+.hero-animated-sub .word:nth-child(2) { animation-delay: 1.9s; }
+
+@keyframes wordReveal {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Old hero (keep for fallback) */
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
   padding: 120px 0 80px; overflow: hidden;
@@ -437,8 +491,8 @@ input, textarea, select { font-family: inherit; }
 
 /* === ANIMATIONS === */
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* === RESPONSIVE === */
